@@ -1,0 +1,48 @@
+function numbersthencharacters(ar){
+  const numsort=(a,b)=>a-b;
+  const charsort=(a,b)=>{
+    if(a<b) 
+    return -1;
+    if(a>b)
+    return 1;
+    return 0;
+  };
+  for(let i=0;i<ar.length;i++){
+    const subarr=ar[i];
+    const nums=subarr.filter((element)=>typeof element==="number");
+    const char=subarr.filter((element)=>typeof element==="string");
+    nums.sort(numsort);
+    char.sort(charsort);
+    ar[i]=[...nums,...char];
+  }
+  ar.sort((a,b)=>{
+    const firstelementa=a[0];
+    const firstelementb=b[0];
+    if(typeof firstelementa==="number"&&typeof firstelementb==="string"){
+      return -1;
+    }
+    if (typeof firstelementa==="string"&&typeof firstElementb==="number") {
+      return 1;
+    }
+    return 0;
+  });
+  return ar;
+}
+
+const ar1=[
+  [11, 12, 24, 23, "a", "b"],
+  [56, "c", 45],
+  [67, "d"],
+  ["f", "e", 78]
+];
+console.log(numbersthencharacters(ar1));
+
+const ar2=[
+  [11, 26, 45.4, "f", "a", "b"],
+  [0],
+  [1.5, "d", "X", 35, "s"],
+  ["f", "e", 58],
+  ["p", "Y", "Z"],
+  [98, 72]
+];
+console.log(numbersthencharacters(ar2));
