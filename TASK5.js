@@ -14,12 +14,12 @@ function spotlightMap(grid){
     }
     const spotlightGrid=[];
     for(let i=0;i<rows;i++){
-        const newRow=[];
+        const newrow=[];
         for(let j=0;j<cols;j++){
             const spotlightSum=calculateSpotlightSum(i,j);
-            newRow.push(spotlightSum);
+            newrow.push(spotlightSum);
         }
-        spotlightGrid.push(newRow);
+        spotlightGrid.push(newrow);
     }
     return spotlightGrid;
 }
